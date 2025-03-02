@@ -1,10 +1,17 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  // ...
+  apiKey: "AIzaSyBEWx2uVh1S35X_3apKTlrVkO3Ebf_2XFA",
+  authDomain: "sport-equipment-store.firebaseapp.com",
+  projectId: "sport-equipment-store",
+  storageBucket: "sport-equipment-store.firebasestorage.app",
+  messagingSenderId: "161309551679",
+  appId: "1:161309551679:web:dc549319461a591df3dc8a",
 };
 
 // Initialize Firebase
