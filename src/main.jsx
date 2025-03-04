@@ -8,6 +8,8 @@ import HomePage from "./pages/HomePage.jsx";
 import SportEquipmentsPage from "./pages/SportEquipmentsPage.jsx";
 import AddEquipment from "./pages/AddEquipment.jsx";
 import MyEquipments from "./pages/MyEquipments.jsx";
+import Login from "./components/Login.jsx";
+import Register from "./components/Register.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -19,6 +21,8 @@ createRoot(document.getElementById("root")).render(
             <Route path="equipments" element={<SportEquipmentsPage />} />
             <Route path="addEquipment" element={<AddEquipment />} />
             <Route path="myEquipments" element={<MyEquipments />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Route>
         </Routes>
       </BrowserRouter>
