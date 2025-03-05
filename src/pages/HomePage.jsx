@@ -1,10 +1,19 @@
+import { useEffect, useState } from "react";
 import Banner from "../components/Banner";
+import EquipmentSection from "../components/EquipmentSection";
 
 const HomePage = () => {
+  const [equipments, setEquipments] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:2345/products")
+      .then((res) => res.json())
+      .then((result) => setEquipments(result));
+  }, []);
+
   return (
     <>
-      <div>HomePage</div>
       <Banner />
+      <EquipmentSection equipments={equipments} />
     </>
   );
 };
