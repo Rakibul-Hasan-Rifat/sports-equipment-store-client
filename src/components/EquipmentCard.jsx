@@ -24,12 +24,3 @@ const EquipmentCard = ({ equipment }) => {
 };
 
 export default EquipmentCard;
-// category: "fitness";
-// customization: "None";
-// description: "Adjustable dumbbells set for strength training.";
-// image_url: "https://womenshealthprod.vtexassets.com/arquivos/ids/162575/image_5.jpg";
-// item_name: "Dumbbells Set";
-// price: "49.99";
-// processing_time: "5";
-// rating: "4.6";
-// stock: "14";
