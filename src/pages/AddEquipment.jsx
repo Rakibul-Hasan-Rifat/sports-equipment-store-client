@@ -1,14 +1,13 @@
 const AddEquipment = () => {
-
   const handleAddEquipment = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target).entries());
-    fetch("http://localhost:2345/products", {
+    fetch("https://sport-equipment-store-server.vercel.app/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     })
       .then((res) => res.json())
       .then((result) => console.log(result))

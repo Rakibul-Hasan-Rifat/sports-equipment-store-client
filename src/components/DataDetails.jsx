@@ -5,7 +5,9 @@ const DataDetails = () => {
   const params = useParams();
   const [itemDetails, setItemDetails] = useState({});
 
-  fetch(`http://localhost:2345/products/${params?.id}`)
+  fetch(
+    `https://sport-equipment-store-server.vercel.app/products/${params?.id}`
+  )
     .then((res) => res.json())
     .then((result) => setItemDetails(result));
 

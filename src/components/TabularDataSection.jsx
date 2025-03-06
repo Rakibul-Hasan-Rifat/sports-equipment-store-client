@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
 const TabularDataSection = () => {
-    const [equipments, setEquipments] = useState([]);
+  const [equipments, setEquipments] = useState([]);
 
-    useEffect(() => {
-      fetch("http://localhost:2345/products?limit=0")
-        .then((res) => res.json())
-        .then((result) => setEquipments(result));
-    }, []);
+  useEffect(() => {
+    fetch("https://sport-equipment-store-server.vercel.app/products?limit=0")
+      .then((res) => res.json())
+      .then((result) => setEquipments(result));
+  }, []);
 
-    console.log(equipments.length);
+  console.log(equipments.length);
   return (
     <table className="table">
       {/* head */}
