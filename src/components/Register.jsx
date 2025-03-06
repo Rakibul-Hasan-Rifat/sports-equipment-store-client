@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../providers/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
-  const { register, updateUser } = useContext(AuthContext);
+  const { register, updateUser, googleLogin } = useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -14,7 +15,7 @@ const Register = () => {
     );
 
     const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6}$/;
-    
+
     regex.test(password)
       ? register(email, password)
           .then((result) => {
@@ -32,6 +33,13 @@ const Register = () => {
       : toast.error(
           "Password should have at least 6 charecters with at least 1 uppercase and 1 lowercase"
         );
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin().then((result) => {
+      console.log("from google register", result.user);
+      toast.success("User logged in successfully by Google!!👌👌");
+    });
   };
 
   return (
@@ -75,6 +83,9 @@ const Register = () => {
             Login
           </Link>
         </p>
+        <button className="btn flex items-center" onClick={handleGoogleLogin}>
+          <FcGoogle /> Google login
+        </button>
       </div>
     </>
   );

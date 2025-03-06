@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../providers/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, googleLogin } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -16,6 +17,13 @@ const Login = () => {
     login(email, password).then((result) => {
       console.log("from register", result.user);
       toast.success("User logged in successfully!!👌👌");
+    });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin().then((result) => {
+      console.log("from google login", result.user);
+      toast.success("User logged in successfully by Google!!👌👌");
     });
   };
 
@@ -48,6 +56,9 @@ const Login = () => {
             Register
           </Link>
         </p>
+        <button className="btn flex items-center" onClick={handleGoogleLogin}>
+          <FcGoogle /> Google login
+        </button>
       </div>
     </>
   );

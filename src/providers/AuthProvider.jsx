@@ -15,12 +15,12 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
+console.log(user);
   const googleProvider = new GoogleAuthProvider();
 
   const register = (email, password) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const login = (email, password) => {
@@ -34,26 +34,28 @@ const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    setLoading(true)
-    return signOut(auth)
-  }
+    setLoading(true);
+    return signOut(auth);
+  };
 
   const updateUser = (name, photo) => {
-    setLoading(true)
+    setLoading(true);
     return updateProfile(auth.currentUser, {
-      displayName: name, photoURL: photo
-    })
-  }
+      displayName: name,
+      photoURL: photo,
+    });
+  };
 
   useEffect(() => {
     const connection = onAuthStateChanged(auth, (currentUser) => {
+      console.log('current user from provider', currentUser)
       currentUser ? setUser(currentUser) : setUser(null);
-      console.log('from the provider', user);
-      
+      setLoading(false);
+      console.log("from the provider", user);
     });
 
     return () => connection();
-  }, []);
+  }, [user]);
 
   const authInfo = {
     user,
@@ -66,7 +68,7 @@ const AuthProvider = ({ children }) => {
     updateUser,
     googleLogin,
   };
-  
+
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
