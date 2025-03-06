@@ -6,6 +6,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
+  updateProfile,
+  signOut,
 } from "firebase/auth";
 
 export const AuthContext = createContext(null);
@@ -18,7 +20,7 @@ const AuthProvider = ({ children }) => {
 
   const register = (email, password) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password)
   };
 
   const login = (email, password) => {
@@ -30,6 +32,18 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
+
+  const logout = () => {
+    setLoading(true)
+    return signOut(auth)
+  }
+
+  const updateUser = (name, photo) => {
+    setLoading(true)
+    return updateProfile(auth.currentUser, {
+      displayName: name, photoURL: photo
+    })
+  }
 
   useEffect(() => {
     const connection = onAuthStateChanged(auth, (currentUser) => {
@@ -46,8 +60,10 @@ const AuthProvider = ({ children }) => {
     loading,
     setUser,
     setLoading,
-    register,
     login,
+    logout,
+    register,
+    updateUser,
     googleLogin,
   };
   

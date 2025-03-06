@@ -1,17 +1,17 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import AuthProvider from "./providers/AuthProvider.jsx";
 import { BrowserRouter, Route, Routes } from "react-router";
-import HomeLayout from "./layouts/HomeLayout.jsx";
+import "./index.css";
+import Login from "./components/Login.jsx";
 import HomePage from "./pages/HomePage.jsx";
-import SportEquipmentsPage from "./pages/SportEquipmentsPage.jsx";
+import Register from "./components/Register.jsx";
+import HomeLayout from "./layouts/HomeLayout.jsx";
 import AddEquipment from "./pages/AddEquipment.jsx";
 import MyEquipments from "./pages/MyEquipments.jsx";
-import Login from "./components/Login.jsx";
-import Register from "./components/Register.jsx";
-import TabularDataSection from "./components/TabularDataSection.jsx";
+import AuthProvider from "./providers/AuthProvider.jsx";
 import DataDetails from "./components/DataDetails.jsx";
+import SportEquipmentsPage from "./pages/SportEquipmentsPage.jsx";
+import TabularDataSection from "./components/TabularDataSection.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
