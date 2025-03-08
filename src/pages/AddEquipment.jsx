@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import toast from "react-hot-toast";
+
 const AddEquipment = () => {
+  const { user } = useContext(AuthContext);
+
   const handleAddEquipment = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target).entries());
@@ -7,10 +13,18 @@ const AddEquipment = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+        ...formData,
+        user: { name: user?.displayName, email: user?.email },
+      }),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result))
+      .then((result) => {
+        if (result.insertedId)
+          toast.success(
+            `An item with id ${result.insertedId} is added to the database`
+          );
+      })
       .catch((err) => console.log(err));
     console.log(JSON.stringify(formData));
   };

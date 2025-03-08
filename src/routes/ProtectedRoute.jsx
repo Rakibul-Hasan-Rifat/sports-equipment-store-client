@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
   if (loading)
     return (
       <div className="flex items-center justify-center my-8">
-        <span className="loading loading-infinity loading-xl w-[50px]"></span>
+        <span className="loading loading-infinity w-[50px]"></span>
       </div>
     );
 

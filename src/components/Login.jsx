@@ -14,10 +14,14 @@ const Login = () => {
       new FormData(e.target).entries()
     );
 
-    login(email, password).then((result) => {
-      console.log("from register", result.user);
-      toast.success("User logged in successfully!!👌👌");
-    });
+    login(email, password)
+      .then((result) => {
+        console.log("from register", result.user);
+        toast.success("User logged in successfully!!👌👌");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
 
   const handleGoogleLogin = () => {
