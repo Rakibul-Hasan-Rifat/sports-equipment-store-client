@@ -22,12 +22,17 @@ const MyEquipments = () => {
 
   const handleDelete = (id) => {
     console.log("delete btn clicked", id);
-    fetch(`https://sport-equipment-store-server.vercel.app/products/${id}`)
+    fetch(`https://sport-equipment-store-server.vercel.app/products/${id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((result) => {
+        console.log(result);
         if (result.deletedCount) {
           toast.success(`The item with id ${id} is deleted successfully.`);
           setProductsByEmail(productsByEmail.filter((prd) => prd._id !== id));
+        } else {
+          console.log("not deleted");
         }
       });
   };
@@ -37,7 +42,7 @@ const MyEquipments = () => {
       <Toaster />
       <div className="my-8 grid grid-cols-3 gap-3">
         {productsByEmail?.map((product) => (
-          <div className="card bg-base-100 w-96 shadow-sm">
+          <div key={product?._id} className="card bg-base-100 w-96 shadow-sm">
             <figure>
               <img
                 src={product?.image_url}
